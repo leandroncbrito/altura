@@ -1,0 +1,6 @@
+@Altura_HostAddress = http://localhost:5196
+
+GET {{Altura_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
