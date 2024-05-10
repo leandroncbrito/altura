@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Application", "Altur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Unit.Tests", "Altura.Unit.Tests\Altura.Unit.Tests.csproj", "{326D156A-4988-4A2F-B5A6-715D55AF2D55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Infrastructure", "Altura.Infra\Altura.Infrastructure.csproj", "{221880AE-21D2-44E8-97D9-04FB67DBC5AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Infrastructure", "Altura.Infrastructure\Altura.Infrastructure.csproj", "{221880AE-21D2-44E8-97D9-04FB67DBC5AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Domain", "Altura.Domain\Altura.Domain.csproj", "{6ADDBF7C-0D54-4D61-9A04-DCF02E48CA99}"
 EndProject

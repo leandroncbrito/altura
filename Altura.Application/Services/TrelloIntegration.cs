@@ -35,7 +35,7 @@ namespace Altura.Application.Services
             _trelloCard = trelloCard;
         }
 
-        public async Task ExtractTenderProperties(IEnumerable<Tender> tenders, CancellationToken cancellationToken)
+        public async Task TransformTendersToCards(IEnumerable<Tender> tenders, CancellationToken cancellationToken)
         {
             //var board = await ObtainBoardAsync(cancellationToken);
             //await CreateCustomFieldsAsync(board.Id, cancellationToken);

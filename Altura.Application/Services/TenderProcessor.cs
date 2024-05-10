@@ -19,14 +19,9 @@ namespace Altura.Application.Services
         {
             var tenders = _tenderParser.ParseTenders();
 
-            await TransformTendersToCards(tenders, cancellationToken);
+            await _trelloIntegration.TransformTendersToCards(tenders, cancellationToken);
 
             return true;
-        }
-
-        private async Task TransformTendersToCards(IEnumerable<Tender> tenders, CancellationToken cancellationToken)
-        {
-            await _trelloIntegration.ExtractTenderProperties(tenders, cancellationToken);
         }
     }
 }
