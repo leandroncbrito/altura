@@ -1,8 +1,9 @@
-﻿using CsvHelper;
+﻿using Altura.Domain;
+using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 
-namespace Altura
+namespace Altura.Infrastructure.Mapping
 {
     public class TenderMap : ClassMap<Tender>
     {
@@ -32,7 +33,7 @@ namespace Altura
             {
                 return result;
             }
-            
+
             return decimal.Zero;
         }
     }

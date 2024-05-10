@@ -1,4 +1,4 @@
-﻿namespace Altura
+﻿namespace Altura.Domain
 {
     public class Tender
     {
@@ -11,8 +11,8 @@
         public DateTimeOffset? ExpirationDate { get; set; }
         public bool HasDocuments { get; set; }
         public string Location { get; set; } = string.Empty;
-        public DateTimeOffset? PublicationDate { get; set; }        
-        public byte Status { get; set;}
+        public DateTimeOffset? PublicationDate { get; set; }
+        public byte Status { get; set; }
         public string Currency { get; set; } = string.Empty;
         public decimal? Value { get; set; }
     }

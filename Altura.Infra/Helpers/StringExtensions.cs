@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Altura
+﻿namespace Altura.Infrastructure.Helpers
 {
     public static class StringExntesions
     {
@@ -11,7 +9,7 @@ namespace Altura
                 return true;
             }
 
-            if (str == null || value == null) 
+            if (str == null || value == null)
             {
                 return false;
             }

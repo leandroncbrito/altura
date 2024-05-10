@@ -1,11 +1,37 @@
-﻿namespace Altura
+﻿using Altura.Application.Interfaces;
+using Altura.Domain;
+using Altura.Infrastructure.Helpers;
+using Altura.Infrastructure.Interfaces;
+using TrelloDotNet.Model;
+
+namespace Altura.Application.Services
 {
-    public class TrelloCustomFields
+    public class TrelloCustomFields : ITrelloCustomFields
     {
-        private readonly TrelloApi _trelloApi;
-        public TrelloCustomFields()
+        private readonly ITrelloApi _trelloApi;
+        public TrelloCustomFields(ITrelloApi trelloApi)
         {
-            _trelloApi = new TrelloApi();
+            _trelloApi = trelloApi;
+        }
+
+        public async Task<List<CustomField>> GetCustomFieldsAsync(string boardId, CancellationToken cancellationToken)
+        {
+            return await _trelloApi.GetCustomFieldsOnBoardAsync(boardId, cancellationToken);
+        }
+
+        public CustomField? GetCustomFieldByName(IEnumerable<CustomField> customFields, string fieldName)
+        {
+            return customFields.FirstOrDefault(field => field.Name.IsEqualTo(fieldName));
+        }
+
+        public async Task UpdateCustomFieldValueAsync(string cardId, CustomField? customField, string value, CancellationToken cancellationToken)
+        {
+            if (customField == null)
+            {
+                return;
+            }
+
+            await _trelloApi.UpdateCustomFieldValueOnCardAsync(cardId, customField, value, cancellationToken);
         }
 
         public async Task InitializeCustomFieldsOnABoard(string boardId, CancellationToken cancellationToken)
@@ -26,7 +52,7 @@
 
             var createCustomFieldOnABoardTasks = new List<Task>();
 
-            var apiCustomFields = await _trelloApi.Client.GetCustomFieldsOnBoardAsync(boardId, cancellationToken);
+            var apiCustomFields = await _trelloApi.GetCustomFieldsOnBoardAsync(boardId, cancellationToken);
 
             foreach (var customField in customFieldsToCreate)
             {

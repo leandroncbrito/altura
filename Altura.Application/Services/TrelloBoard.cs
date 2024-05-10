@@ -1,27 +1,32 @@
-﻿using Altura.Application;
-using Altura.Application.Interfaces;
+﻿using Altura.Application.Interfaces;
+using Altura.Infrastructure.Interfaces;
 using TrelloDotNet.Model;
 
-namespace Altura
+namespace Altura.Application.Services
 {
     public class TrelloBoard : ITrelloBoard
     {
-        private readonly TrelloApi _trelloApi;
-        public TrelloBoard() 
-        { 
-            _trelloApi = new TrelloApi();
+        private readonly ITrelloApi _trelloApi;
+        public TrelloBoard(ITrelloApi trelloApi)
+        {
+            _trelloApi = trelloApi;
         }
 
         public async Task<Board> ObtainBoardAsync(string boardId, CancellationToken cancellationToken)
         {
-            var existingBoard = await _trelloApi.Client.GetBoardAsync(boardId, cancellationToken);
+            var existingBoard = await _trelloApi.GetBoardAsync(boardId, cancellationToken);
 
             if (existingBoard == null)
             {
-                existingBoard = await _trelloApi.Client.AddBoardAsync(new Board("Altura"), cancellationToken: cancellationToken);
+                existingBoard = await _trelloApi.AddBoardAsync(new Board("Altura"), cancellationToken: cancellationToken);
             }
 
             return existingBoard;
+        }
+
+        public Task<List<List>> GetListsOnBoardAsync(string boardId, CancellationToken cancellationToken)
+        {
+            return _trelloApi.GetListsOnBoardAsync(boardId, cancellationToken);
         }
     }
 }

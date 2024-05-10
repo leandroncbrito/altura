@@ -1,4 +1,4 @@
-﻿namespace Altura
+﻿namespace Altura.Domain
 {
     public class BoardCustomField
     {
@@ -6,7 +6,7 @@
         public string Name { get; private set; }
         public string Type { get; private set; }
 
-        public BoardCustomField(string name, BoardCustomFieldType type) 
+        public BoardCustomField(string name, BoardCustomFieldType type)
         {
             Name = name;
             Type = type.ToString();
