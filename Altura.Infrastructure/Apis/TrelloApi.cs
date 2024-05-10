@@ -1,5 +1,6 @@
 ﻿using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
+using Microsoft.Extensions.Options;
 using System.Text;
 using System.Text.Json;
 using TrelloDotNet;
@@ -14,11 +15,10 @@ namespace Altura.Infrastructure.Apis
         private string ApiKey;
         private string Token;
 
-        public TrelloApi()
+        public TrelloApi(IOptions<TrelloConfiguration> trelloConfig)
         {
-            // get from configuration
-            ApiKey = "9d34198a87f834c848e432f508e345b4";
-            Token = "ATTAdea994e3c1ee4c004f4a7f66fc3f44f4b7695d492251313ffa459710bc51f88dDD195B45";
+            ApiKey = trelloConfig.Value.ApiKey;
+            Token = trelloConfig.Value.Token;
 
             _trelloClient = new TrelloClient(ApiKey, Token, new TrelloClientOptions(includeCustomFieldsInCardGetMethods: true));
         }

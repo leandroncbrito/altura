@@ -1,8 +1,10 @@
 using Altura.Application.Interfaces;
 using Altura.Application.Services;
 using Altura.Infrastructure.Apis;
+using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Readers;
+using TrelloDotNet.AutomationEngine.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,8 @@ builder.Services.AddScoped<ITrelloList, TrelloList>();
 builder.Services.AddScoped<ITrelloCard, TrelloCard>();
 builder.Services.AddScoped<ITrelloCustomFields, TrelloCustomFields>();
 builder.Services.AddScoped<ITrelloIntegration, TrelloIntegration>();
+
+builder.Services.Configure<TrelloConfiguration>(builder.Configuration.GetSection("Trello"));
 
 var app = builder.Build();
 

@@ -15,8 +15,6 @@ namespace Altura.Application.Services
         private readonly ITrelloCustomFields _trelloCustomFields;
         private readonly ILogger<TrelloIntegration> _logger;
 
-        private string BoardId = "N20YA7Aj";
-
         public TrelloIntegration(
             ITrelloBoard trelloBoard,
             ITrelloList trelloList,
@@ -35,7 +33,9 @@ namespace Altura.Application.Services
         {
             try
             {
-                var board = await _trelloBoard.ObtainBoardAsync(BoardId, cancellationToken);
+                var boardId = _trelloBoard.GetBoardId();
+
+                var board = await _trelloBoard.ObtainBoardAsync(boardId, cancellationToken);
 
                 await _trelloCustomFields.InitializeCustomFieldsOnABoard(board.Id, cancellationToken);
 

@@ -1,5 +1,7 @@
 ﻿using Altura.Application.Interfaces;
+using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
+using Microsoft.Extensions.Options;
 using TrelloDotNet.Model;
 
 namespace Altura.Application.Services
@@ -7,9 +9,17 @@ namespace Altura.Application.Services
     public class TrelloBoard : ITrelloBoard
     {
         private readonly ITrelloApi _trelloApi;
-        public TrelloBoard(ITrelloApi trelloApi)
+        private readonly IOptions<TrelloConfiguration> _trelloConfig;
+
+        public TrelloBoard(ITrelloApi trelloApi, IOptions<TrelloConfiguration> trelloConfig)
         {
             _trelloApi = trelloApi;
+            _trelloConfig = trelloConfig;
+        }
+
+        public string GetBoardId()
+        {
+            return _trelloConfig.Value.BoardId;
         }
 
         public async Task<Board> ObtainBoardAsync(string boardId, CancellationToken cancellationToken)
