@@ -24,10 +24,16 @@ namespace Altura.Application.Services
             return customFields.FirstOrDefault(field => field.Name.IsEqualTo(fieldName));
         }
 
-        public async Task UpdateCustomFieldValueAsync(string cardId, CustomField? customField, string value, CancellationToken cancellationToken)
+        public async Task UpdateCustomFieldValueAsync(string cardId, CustomField customField, string value, CancellationToken cancellationToken)
         {
             if (customField == null)
             {
+                return;
+            }
+
+            if (value == null)
+            {
+                await _trelloApi.ClearCustomFieldValueOnCardAsync(cardId, customField, cancellationToken);
                 return;
             }
 

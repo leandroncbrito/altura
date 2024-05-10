@@ -7,21 +7,21 @@ namespace Altura.Api.Controllers
     [ApiController]
     public class TenderController : ControllerBase
     {
-        private readonly ITenderProcessor _tenderExtractor;
+        private readonly ITenderProcessor _tenderProcessor;
         private readonly ILogger<TenderController> _logger;
 
-        public TenderController(ITenderProcessor tenderParser, ILogger<TenderController> logger)
+        public TenderController(ITenderProcessor tenderProcessor, ILogger<TenderController> logger)
         {
-            _tenderExtractor = tenderParser;
+            _tenderProcessor = tenderProcessor;
             _logger = logger;
         }
 
-        [HttpPost(Name = "CreateBoard")]
+        [HttpPost(Name = "ExtractTendersFromCsv")]
         public async Task<ActionResult> Post(CancellationToken cancellationToken)
         {
             try
             {
-                var hasTenders = await _tenderExtractor.ExtractTendersFromCsv(cancellationToken);
+                var hasTenders = await _tenderProcessor.ExtractTendersFromCsv(cancellationToken);
 
                 if (hasTenders is false)
                 {
@@ -36,7 +36,7 @@ namespace Altura.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Trello error", ex);
+                _logger.LogError("Unknown error", ex);
 
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error loading tenders");
             }

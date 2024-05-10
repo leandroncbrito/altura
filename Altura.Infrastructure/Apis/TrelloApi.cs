@@ -43,6 +43,16 @@ namespace Altura.Infrastructure.Apis
             return await _trelloClient.GetListsOnBoardAsync(boardId, cancellationToken);
         }
 
+        public async Task<List> AddListAsync(List list, CancellationToken cancellationToken = default)
+        {
+            return await _trelloClient.AddListAsync(list, cancellationToken);
+        }
+
+        public async Task<List<Card>> GetCardsInListAsync(string listId, CancellationToken cancellationToken = default)
+        {
+            return await _trelloClient.GetCardsInListAsync(listId, cancellationToken);
+        }
+
         public async Task<List<CustomField>> GetCustomFieldsOnBoardAsync(string boardId, CancellationToken cancellationToken = default)
         {
             return await _trelloClient.GetCustomFieldsOnBoardAsync(boardId, cancellationToken);
@@ -53,7 +63,12 @@ namespace Altura.Infrastructure.Apis
             await _trelloClient.UpdateCustomFieldValueOnCardAsync(cardId, customField, newValue, cancellationToken);
         }
 
-        public async Task<bool> CreateCustomFieldOnABoardAsync(string boardId, BoardCustomField customField, CancellationToken cancellationToken)
+        public async Task ClearCustomFieldValueOnCardAsync(string cardId, CustomField customField, CancellationToken cancellationToken = default)
+        {
+            await _trelloClient.ClearCustomFieldValueOnCardAsync(cardId, customField, cancellationToken);
+        }
+
+        public async Task<bool> CreateCustomFieldOnABoardAsync(string boardId, BoardCustomField customField, CancellationToken cancellationToken = default)
         {
             try
             {

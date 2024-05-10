@@ -1,5 +1,4 @@
 ﻿using Altura.Application.Interfaces;
-using Altura.Domain;
 using Altura.Infrastructure.Interfaces;
 
 namespace Altura.Application.Services
@@ -16,7 +15,7 @@ namespace Altura.Application.Services
         }
 
         public async Task<bool> ExtractTendersFromCsv(CancellationToken cancellationToken)
-        {
+        {            
             var tenders = _tenderParser.ParseTenders();
 
             await _trelloIntegration.TransformTendersToCards(tenders, cancellationToken);

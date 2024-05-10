@@ -3,28 +3,54 @@ using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Mapping;
 using CsvHelper;
 using CsvHelper.Configuration;
+using Microsoft.Extensions.Logging;
 using System.Globalization;
 
 namespace Altura.Infrastructure.Readers
 {
     public class TenderParser : ITenderParser
     {
+        private readonly ILogger<TenderParser> _logger;
+
+        public TenderParser(ILogger<TenderParser> logger)
+        {
+            _logger = logger;
+        }
+
         public IEnumerable<Tender> ParseTenders()
         {
-            var models = new List<Tender>();
+            var tenders = new List<Tender>();
 
-            using (var reader = new StreamReader("assignment-opportunities-v1.csv"))
-            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            try
             {
-                while (csv.Read())
+                using (var reader = new StreamReader("../Altura.Infrastructure/DataSource/assignment-opportunities-v1.csv"))
+                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
                 {
-                    csv.Context.RegisterClassMap<TenderMap>();
+                    while (csv.Read())
+                    {
+                        csv.Context.RegisterClassMap<TenderMap>();
 
-                    models.Add(csv.GetRecord<Tender>());
+                        tenders.Add(csv.GetRecord<Tender>());
+                    }
                 }
             }
+            catch (FileNotFoundException)
+            {
+                _logger.LogError("Error: The specified file does not exist.");
+                throw;
+            }
+            catch (CsvHelperException ex)
+            {                
+               _logger.LogError("Error while parsing CSV data: " + ex.Message, ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("An unexpected error occurred: " + ex.Message, ex);
+                throw;
+            }
 
-            return models;
+            return tenders;
         }
     }
 }

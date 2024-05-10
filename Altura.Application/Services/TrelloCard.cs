@@ -40,6 +40,10 @@ namespace Altura.Application.Services
             return await _trelloApi.AddCardAsync(card, cancellationToken);
         }
 
+        public async Task<List<Card>> GetCardsInListAsync(string listId, CancellationToken cancellationToken)
+        {
+            return await _trelloApi.GetCardsInListAsync(listId, cancellationToken);
+        }
 
         private void UpdateCardFields(Card card, Tender tender)
         {
@@ -52,15 +56,29 @@ namespace Altura.Application.Services
         {
             var customFields = await _trelloCustomFields.GetCustomFieldsAsync(card.BoardId, cancellationToken);
 
+            var idField = _trelloCustomFields.GetCustomFieldByName(customFields, "Id");
             var tenderIdField = _trelloCustomFields.GetCustomFieldByName(customFields, "TenderId");
             var lotNumberField = _trelloCustomFields.GetCustomFieldByName(customFields, "LotNumber");
+            var expirationDateField = _trelloCustomFields.GetCustomFieldByName(customFields, "ExpirationDate");
+            var hasDocumentsField = _trelloCustomFields.GetCustomFieldByName(customFields, "HasDocuments");
+            var locationField = _trelloCustomFields.GetCustomFieldByName(customFields, "Location");
+            var publicationDateField = _trelloCustomFields.GetCustomFieldByName(customFields, "PublicationDate");
+            var statusField = _trelloCustomFields.GetCustomFieldByName(customFields, "Status");
             var currencyField = _trelloCustomFields.GetCustomFieldByName(customFields, "Currency");
-
+            var valueField = _trelloCustomFields.GetCustomFieldByName(customFields, "Value");
+            
             var updateTasks = new List<Task>
             {
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, idField, tender.Id.ToString(), cancellationToken),
                 _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, tenderIdField, tender.TenderId.ToString(), cancellationToken),
                 _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, lotNumberField, tender.LotNumber, cancellationToken),
-                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, currencyField, tender.Currency, cancellationToken)
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, expirationDateField, tender.ExpirationDate?.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"), cancellationToken),
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, hasDocumentsField, tender.HasDocuments.ToString().ToLowerInvariant(), cancellationToken),
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, locationField, tender.Location, cancellationToken),
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, publicationDateField, tender.PublicationDate?.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"), cancellationToken),
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, statusField, tender.Status.ToString(), cancellationToken),
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, currencyField, tender.Currency, cancellationToken),
+                _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, valueField, tender.Value?.ToString(), cancellationToken),
             };
 
             await Task.WhenAll(updateTasks);
