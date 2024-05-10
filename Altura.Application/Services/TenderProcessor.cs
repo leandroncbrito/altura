@@ -15,7 +15,7 @@ namespace Altura.Application.Services
         }
 
         public async Task<bool> ExtractTendersFromCsv(CancellationToken cancellationToken)
-        {            
+        {
             var tenders = _tenderParser.ParseTenders();
 
             await _trelloIntegration.TransformTendersToCards(tenders, cancellationToken);

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Altura.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/tenders")]
     [ApiController]
     public class TenderController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace Altura.Api.Controllers
             _logger = logger;
         }
 
-        [HttpPost(Name = "ExtractTendersFromCsv")]
+        [HttpPost("parse")]        
         public async Task<ActionResult> Post(CancellationToken cancellationToken)
         {
             try

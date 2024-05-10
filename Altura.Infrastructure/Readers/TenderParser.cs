@@ -40,8 +40,8 @@ namespace Altura.Infrastructure.Readers
                 throw;
             }
             catch (CsvHelperException ex)
-            {                
-               _logger.LogError("Error while parsing CSV data: " + ex.Message, ex);
+            {
+                _logger.LogError("Error while parsing CSV data: " + ex.Message, ex);
                 throw;
             }
             catch (Exception ex)

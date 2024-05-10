@@ -1,4 +1,4 @@
-﻿using Altura.Domain;
+﻿using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
 using System.Text;
 using System.Text.Json;
@@ -31,6 +31,11 @@ namespace Altura.Infrastructure.Apis
         public async Task<Card> AddCardAsync(Card card, CancellationToken cancellationToken = default)
         {
             return await _trelloClient.AddCardAsync(card, cancellationToken);
+        }
+
+        public async Task<Card> UpdateCardAsync(Card cardWithChanges, CancellationToken cancellationToken = default)
+        {
+            return await _trelloClient.UpdateCardAsync(cardWithChanges, cancellationToken);
         }
 
         public async Task<Board> GetBoardAsync(string boardId, CancellationToken cancellationToken = default)

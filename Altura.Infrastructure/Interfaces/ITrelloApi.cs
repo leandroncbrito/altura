@@ -1,4 +1,4 @@
-﻿using Altura.Domain;
+﻿using Altura.Infrastructure.Apis.Models;
 using TrelloDotNet.Model;
 
 namespace Altura.Infrastructure.Interfaces
@@ -10,6 +10,7 @@ namespace Altura.Infrastructure.Interfaces
         Task<List<List>> GetListsOnBoardAsync(string boardId, CancellationToken cancellationToken = default(CancellationToken));
         Task<List> AddListAsync(List list, CancellationToken cancellationToken = default(CancellationToken));
         Task<Card> AddCardAsync(Card card, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Card> UpdateCardAsync(Card cardWithChanges, CancellationToken cancellationToken = default(CancellationToken));
         Task<List<Card>> GetCardsInListAsync(string listId, CancellationToken cancellationToken = default(CancellationToken));
         Task<List<CustomField>> GetCustomFieldsOnBoardAsync(string boardId, CancellationToken cancellationToken = default(CancellationToken));
         Task UpdateCustomFieldValueOnCardAsync(string cardId, CustomField customField, string newValue, CancellationToken cancellationToken = default(CancellationToken));
