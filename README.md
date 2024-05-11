@@ -2,41 +2,40 @@
 
 ---
 
-# Execution Guide
+## Execution Guide
 
-## Introduction
+### Introduction
 
-The project involves integration with Trello.
+The Altura project involves integration with Trello, aiming to manage tender details efficiently.
 
-## Pre-requisites
+### Pre-requisites
 
 Before running the project, ensure you have the following pre-requisites installed:
 
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download)
 - **Premium** Trello account
 
-Note: A standard account has no permission to work with Custom Fields
+Please note that a standard Trello account lacks permission to work with Custom Fields.
 
-## Configuration
+### Configuration
 
-1. **Obtain ApiKey and Token**:
+1. **Obtain API Key and Token**:
     - Log in to your Trello account.
-    - Create a new workspace.
-    - Go to [Trello Power-Ups Admin Portal](https://trello.com/power-ups/admin/) page.
-    - Fill in the fields and click on Create button.
-    - Click on Generate a new API key.
-    - Copy the ApiKey provided.
-    - Open the token link next to API Key field
-    - Allow the application access to your account.    
+    - Create a new workspace if necessary.
+    - Visit the [Trello Power-Ups Admin Portal](https://trello.com/power-ups/admin/) page.
+    - Fill in the required fields and click "Create."
+    - Click "Generate a new API key."
+    - Copy the provided API Key.
+    - Next to the API Key field, click on the provided link to obtain a Token.
+    - Allow the application access to your Trello account.
     - Copy the generated Token.
 
 2. **Configure Project**:
     - Open the project solution in your preferred IDE.
-    - Navigate to the configuration file `appsettings.Development.json` where ApiKkey, Token, and BoardId are stored.
-    - Update the configuration file with the values obtained in the previous steps.
-    - In order to use the same board and update cards, the Trello.
+    - Navigate to the configuration file `appsettings.Development.json`, where the API Key, Token, and BoardId are stored.
+    - Update the configuration file with the values obtained in the previous step.
 
-## Running the Project
+### Running the Project
 
 1. **Build the Project**:
     - Open a terminal or command prompt.
@@ -55,19 +54,21 @@ Note: A standard account has no permission to work with Custom Fields
 3. **Verify Execution**:
     - Once the application is running, verify that it connects to Trello and performs the desired actions as expected.
 
-## Extracting tender details
+### Extracting Tender Details
 
-1. **Endpoint**:
-    - Navigate to http://localhost:5238/swagger/index.html
-    - Execute the call to the endpoint POST `/api/tender/parse`
-2. **Trello**
-    - List and cards should be created while the project reads the .csv file
-3. **Stop execution**
-    - Press CTRL+C to stop the execution
+1. **Parse Endpoint**:
+    - With the project running, navigate to http://localhost:5238/swagger/index.html.
+    - Execute a call to the endpoint `POST /api/tender/parse`.
 
-## Updating the board
+2. **Trello Integration**:
+    - Check if lists and cards are created as the application consumes the `.csv` file.
 
-1. 1. **Set Up BoardId**:
-    - A new board named "Altura" will be created after the first execution of parse endpoint.    - 
-    - Obtain the Id of the Trello board in the board's URL after `/b/`. Eg: "https://trello.com/b/ABC123/altura"  => `ABC123`
-    - Add this value to configuration settings under Trello property.
+3. **Stopping Execution**:
+    - Press `CTRL+C` to stop the application execution.
+
+### Updating the Trello Board
+
+1. **Set Up BoardId**:
+    - After the first execution of the parse endpoint, a new board named "Altura" will be created.
+    - Obtain the ID of the Trello board from the board's URL after `/b/`. For example, in "https://trello.com/b/ABC123/altura", the ID is `ABC123`.
+    - Add this value to the configuration settings under the `Trello` property.     
