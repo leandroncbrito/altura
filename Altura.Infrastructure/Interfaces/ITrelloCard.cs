@@ -1,7 +1,7 @@
-﻿using Altura.Domain;
+﻿using Altura.Domain.Entities;
 using TrelloDotNet.Model;
 
-namespace Altura.Application.Interfaces
+namespace Altura.Infrastructure.Interfaces
 {
     public interface ITrelloCard
     {

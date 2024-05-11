@@ -1,4 +1,4 @@
-﻿using Altura.Domain;
+﻿using Altura.Domain.Entities;
 using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;

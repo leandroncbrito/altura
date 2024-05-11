@@ -11,18 +11,14 @@ namespace Altura.Infrastructure.Transformations
                 return null;
             }
 
-            switch (customField.Type.ToString())
+            return customField.Type switch
             {
-                case "Text":
-                case "Number":
-                    return value.ToString();
-                case "Checkbox":
-                    return value.ToString().ToLowerInvariant();
-                case "Date":                    
-                    return ((DateTimeOffset)value).ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-                default: 
-                    return null;
-            }
+                CustomFieldType.Text => value.ToString(),
+                CustomFieldType.Number => value.ToString(),
+                CustomFieldType.Checkbox => ((bool)value).ToString().ToLowerInvariant(),
+                CustomFieldType.Date => ((DateTimeOffset)value).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                _ => null,
+            };
         }
     }
 }

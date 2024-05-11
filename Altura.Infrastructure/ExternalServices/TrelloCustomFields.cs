@@ -1,10 +1,9 @@
-﻿using Altura.Application.Interfaces;
-using Altura.Infrastructure.Apis.Models;
+﻿using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Helpers;
 using Altura.Infrastructure.Interfaces;
 using TrelloDotNet.Model;
 
-namespace Altura.Application.Services
+namespace Altura.Infrastructure.ExternalServices
 {
     public class TrelloCustomFields : ITrelloCustomFields
     {

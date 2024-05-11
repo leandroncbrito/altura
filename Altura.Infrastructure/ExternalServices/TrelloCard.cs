@@ -1,12 +1,11 @@
-﻿using Altura.Application.Interfaces;
-using Altura.Domain;
+﻿using Altura.Domain.Entities;
 using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Transformations;
 using Microsoft.Extensions.Logging;
 using TrelloDotNet.Model;
 
-namespace Altura.Application.Services
+namespace Altura.Infrastructure.ExternalServices
 {
     public class TrelloCard : ITrelloCard
     {
@@ -86,7 +85,7 @@ namespace Altura.Application.Services
                 _trelloCustomFields.UpdateCustomFieldValueAsync(card.Id, valueField, valueField.ConvertToString(tender.Value), cancellationToken),
             };
 
-            await Task.WhenAll(updateTasks);            
+            await Task.WhenAll(updateTasks);
         }
     }
 }

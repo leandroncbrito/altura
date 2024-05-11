@@ -1,10 +1,9 @@
-﻿using Altura.Application.Interfaces;
-using Altura.Infrastructure.Apis.Models;
+﻿using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
 using Microsoft.Extensions.Options;
 using TrelloDotNet.Model;
 
-namespace Altura.Application.Services
+namespace Altura.Infrastructure.ExternalServices
 {
     public class TrelloBoard : ITrelloBoard
     {

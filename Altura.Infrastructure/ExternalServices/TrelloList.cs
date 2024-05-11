@@ -1,8 +1,7 @@
-﻿using Altura.Application.Interfaces;
-using Altura.Infrastructure.Interfaces;
+﻿using Altura.Infrastructure.Interfaces;
 using TrelloDotNet.Model;
 
-namespace Altura.Application.Services
+namespace Altura.Infrastructure.ExternalServices
 {
     public class TrelloList : ITrelloList
     {

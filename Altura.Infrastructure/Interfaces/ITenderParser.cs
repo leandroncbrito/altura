@@ -1,4 +1,4 @@
-﻿using Altura.Domain;
+﻿using Altura.Domain.Entities;
 
 namespace Altura.Infrastructure.Interfaces
 {

@@ -7,12 +7,12 @@ namespace Altura.Api.Controllers
     [ApiController]
     public class TenderController : ControllerBase
     {
-        private readonly ITenderProcessor _tenderProcessor;
+        private readonly ITenderService _tenderService;
         private readonly ILogger<TenderController> _logger;
 
-        public TenderController(ITenderProcessor tenderProcessor, ILogger<TenderController> logger)
+        public TenderController(ITenderService tenderService, ILogger<TenderController> logger)
         {
-            _tenderProcessor = tenderProcessor;
+            _tenderService = tenderService;
             _logger = logger;
         }
 
@@ -21,16 +21,16 @@ namespace Altura.Api.Controllers
         {
             try
             {
-                var hasTenders = await _tenderProcessor.ExtractTendersFromCsv(cancellationToken);
+                var hasTenders = await _tenderService.ExtractTendersFromCsv(cancellationToken);
 
                 if (hasTenders is false)
                 {
                     return NotFound("Tenders not found");
                 }
             }
-            catch (TaskCanceledException tcex)
+            catch (TaskCanceledException ex)
             {
-                _logger.LogWarning("Task cancelled", tcex);
+                _logger.LogWarning("Task cancelled", ex);
 
                 return StatusCode(StatusCodes.Status499ClientClosedRequest, "Request closed");
             }

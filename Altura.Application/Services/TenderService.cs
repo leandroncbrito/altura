@@ -3,22 +3,22 @@ using Altura.Infrastructure.Interfaces;
 
 namespace Altura.Application.Services
 {
-    public class TenderProcessor : ITenderProcessor
+    public class TenderService : ITenderService
     {
         private readonly ITenderParser _tenderParser;
-        private readonly ITrelloIntegration _trelloIntegration;
+        private readonly ITrelloTenderService _trelloTenderService;
 
-        public TenderProcessor(ITenderParser tenderExtractor, ITrelloIntegration trelloIntegration)
+        public TenderService(ITenderParser tenderExtractor, ITrelloTenderService trelloTenderService)
         {
             _tenderParser = tenderExtractor;
-            _trelloIntegration = trelloIntegration;
+            _trelloTenderService = trelloTenderService;
         }
 
         public async Task<bool> ExtractTendersFromCsv(CancellationToken cancellationToken)
         {
             var tenders = _tenderParser.ParseTenders();
 
-            await _trelloIntegration.TransformTendersToCards(tenders, cancellationToken);
+            await _trelloTenderService.TransformTendersToCards(tenders, cancellationToken);
 
             return true;
         }

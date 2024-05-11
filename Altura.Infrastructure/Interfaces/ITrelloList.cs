@@ -1,6 +1,6 @@
 ﻿using TrelloDotNet.Model;
 
-namespace Altura.Application.Interfaces
+namespace Altura.Infrastructure.Interfaces
 {
     public interface ITrelloList
     {

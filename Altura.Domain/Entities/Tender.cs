@@ -1,4 +1,4 @@
-﻿namespace Altura.Domain
+﻿namespace Altura.Domain.Entities
 {
     public class Tender
     {

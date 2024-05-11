@@ -1,26 +1,27 @@
 ﻿using Altura.Application.Interfaces;
-using Altura.Domain;
+using Altura.Domain.Entities;
 using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Helpers;
+using Altura.Infrastructure.Interfaces;
 using Microsoft.Extensions.Logging;
 using TrelloDotNet.Model;
 
 namespace Altura.Application.Services
 {
-    public class TrelloIntegration : ITrelloIntegration
+    public class TrelloTenderService : ITrelloTenderService
     {
         private readonly ITrelloBoard _trelloBoard;
         private readonly ITrelloList _trelloList;
         private readonly ITrelloCard _trelloCard;
         private readonly ITrelloCustomFields _trelloCustomFields;
-        private readonly ILogger<TrelloIntegration> _logger;
+        private readonly ILogger<TrelloTenderService> _logger;
 
-        public TrelloIntegration(
+        public TrelloTenderService(
             ITrelloBoard trelloBoard,
             ITrelloList trelloList,
             ITrelloCard trelloCard,
             ITrelloCustomFields trelloCustomFields,
-            ILogger<TrelloIntegration> logger)
+            ILogger<TrelloTenderService> logger)
         {
             _trelloBoard = trelloBoard;
             _trelloList = trelloList;

@@ -1,4 +1,4 @@
-﻿using Altura.Domain;
+﻿using Altura.Domain.Entities;
 using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Mapping;
 using CsvHelper;

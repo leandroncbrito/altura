@@ -2,6 +2,7 @@ using Altura.Application.Interfaces;
 using Altura.Application.Services;
 using Altura.Infrastructure.Apis;
 using Altura.Infrastructure.Apis.Models;
+using Altura.Infrastructure.ExternalServices;
 using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Readers;
 using TrelloDotNet.AutomationEngine.Model;
@@ -15,15 +16,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ITenderProcessor, TenderProcessor>();
+builder.Services.AddScoped<ITenderService, TenderService>();
 builder.Services.AddScoped<ITenderParser, TenderParser>();
 builder.Services.AddScoped<ITrelloApi, TrelloApi>();
-builder.Services.AddScoped<ITrelloIntegration, TrelloIntegration>();
+builder.Services.AddScoped<ITrelloTenderService, TrelloTenderService>();
 builder.Services.AddScoped<ITrelloBoard, TrelloBoard>();
 builder.Services.AddScoped<ITrelloList, TrelloList>();
 builder.Services.AddScoped<ITrelloCard, TrelloCard>();
 builder.Services.AddScoped<ITrelloCustomFields, TrelloCustomFields>();
-builder.Services.AddScoped<ITrelloIntegration, TrelloIntegration>();
 
 builder.Services.Configure<TrelloConfiguration>(builder.Configuration.GetSection("Trello"));
 
