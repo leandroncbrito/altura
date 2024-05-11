@@ -4,6 +4,6 @@ namespace Altura.Infrastructure.Interfaces
 {
     public interface ITenderParser
     {
-        IEnumerable<Tender> ParseTenders();
+        IEnumerable<Tender> ParseTenders(string? path = null);
     }
 }

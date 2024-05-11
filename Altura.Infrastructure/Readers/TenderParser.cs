@@ -17,13 +17,16 @@ namespace Altura.Infrastructure.Readers
             _logger = logger;
         }
 
-        public IEnumerable<Tender> ParseTenders()
+        public IEnumerable<Tender> ParseTenders(string? path = null)
         {
+            //TODO: get from endpoint or storage path eg: S3 bucket
+            path ??= "../Altura.Infrastructure/DataSource/assignment-opportunities-v1.csv";
+
             var tenders = new List<Tender>();
 
             try
             {
-                using (var reader = new StreamReader("../Altura.Infrastructure/DataSource/assignment-opportunities-v1.csv"))
+                using (var reader = new StreamReader(path))
                 using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
                 {
                     while (csv.Read())
