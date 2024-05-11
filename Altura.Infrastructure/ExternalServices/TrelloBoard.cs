@@ -23,14 +23,12 @@ namespace Altura.Infrastructure.ExternalServices
 
         public async Task<Board> ObtainBoardAsync(string boardId, CancellationToken cancellationToken)
         {
-            var existingBoard = await _trelloApi.GetBoardAsync(boardId, cancellationToken);
-
-            if (existingBoard == null)
+            if (string.IsNullOrEmpty(boardId) is false)
             {
-                existingBoard = await _trelloApi.AddBoardAsync(new Board("Altura", "Tender details"), cancellationToken: cancellationToken);
+                return await _trelloApi.GetBoardAsync(boardId, cancellationToken);
             }
 
-            return existingBoard;
+            return await _trelloApi.AddBoardAsync(new Board("Altura", "Tender details"), cancellationToken: cancellationToken);
         }
 
         public Task<List<List>> GetListsOnBoardAsync(string boardId, CancellationToken cancellationToken)

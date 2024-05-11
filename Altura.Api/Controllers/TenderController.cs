@@ -32,13 +32,13 @@ namespace Altura.Api.Controllers
             {
                 _logger.LogWarning("Task cancelled", ex);
 
-                return StatusCode(StatusCodes.Status499ClientClosedRequest, "Request closed");
+                return StatusCode(StatusCodes.Status499ClientClosedRequest, ex.Message);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Unknown error", ex);
+                _logger.LogError("General exception", ex);
 
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error loading tenders");
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
 
             return Ok();
