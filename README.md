@@ -51,9 +51,6 @@ Please note that a standard Trello account lacks permission to work with Custom 
       dotnet run --project Altura.Api
       ```
 
-3. **Verify Execution**:
-    - Once the application is running, verify that it connects to Trello and performs the desired actions as expected.
-
 ### Extracting Tender Details
 
 1. **Parse Endpoint**:
@@ -71,7 +68,8 @@ Please note that a standard Trello account lacks permission to work with Custom 
 1. **Set Up BoardId**:
     - After the first execution of the parse endpoint, a new board named "Altura" will be created.
     - Obtain the ID of the Trello board from the board's URL after `/b/`. For example, in "https://trello.com/b/ABC123/altura", the ID is `ABC123`.
-    - Add this value to the configuration settings under the `Trello` property.     
+    - Add this value to the configuration settings under the `Trello` property.
+    - Execute the application again.
 
 ### Improvements
 
