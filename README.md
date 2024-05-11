@@ -72,3 +72,18 @@ Please note that a standard Trello account lacks permission to work with Custom 
     - After the first execution of the parse endpoint, a new board named "Altura" will be created.
     - Obtain the ID of the Trello board from the board's URL after `/b/`. For example, in "https://trello.com/b/ABC123/altura", the ID is `ABC123`.
     - Add this value to the configuration settings under the `Trello` property.     
+
+### Improvements
+
+1. **Background Service**:
+    - Introduce a background service to handle the process asynchronously improving overall performance and scalability.
+    - This ensures that the application remains responsive and can handle multiple requests concurrently without blocking.
+
+2. **Unit Testing Enhancements**
+    - Improve unit test coverage by writing additional test cases to validate various scenarios, including error conditions and edge cases.
+
+3. **Integration Tests**:
+    - Develop integration tests to validate end-to-end functionality and interactions between different components of the application. 
+
+4. **Read Files from Amazon S3**:
+    - Implement functionality to read files directly from Amazon S3 storage, enabling seamless integration with cloud-based file storage solutions. This would enhance scalability, reliability, and accessibility of file processing operations, especially in distributed or cloud-native architectures
