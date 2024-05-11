@@ -1,7 +1,7 @@
 using Altura.Application.Interfaces;
 using Altura.Application.Services;
 using Altura.Infrastructure.Apis;
-using Altura.Infrastructure.Apis.Models;
+using Altura.Infrastructure.Apis.Configurations;
 using Altura.Infrastructure.ExternalServices;
 using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Readers;

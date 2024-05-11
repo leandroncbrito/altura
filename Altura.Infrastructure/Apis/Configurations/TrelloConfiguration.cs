@@ -1,4 +1,4 @@
-﻿namespace Altura.Infrastructure.Apis.Models
+﻿namespace Altura.Infrastructure.Apis.Configurations
 {
     public class TrelloConfiguration
     {

@@ -1,4 +1,5 @@
-﻿using Altura.Infrastructure.Apis.Models;
+﻿using Altura.Infrastructure.Apis.Configurations;
+using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
 using Microsoft.Extensions.Options;
 using System.Text;
