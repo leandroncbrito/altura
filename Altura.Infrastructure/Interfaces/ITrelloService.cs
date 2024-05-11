@@ -2,7 +2,7 @@
 
 namespace Altura.Application.Interfaces
 {
-    public interface ITrelloTenderService
+    public interface ITrelloService
     {
         Task TransformTendersToCards(IEnumerable<Tender> tenders, CancellationToken cancellationToken);
     }

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TrelloDotNet" Version="1.10.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Altura.Domain\Altura.Domain.csproj" />
     <ProjectReference Include="..\Altura.Infrastructure\Altura.Infrastructure.csproj" />
   </ItemGroup>

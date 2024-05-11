@@ -6,19 +6,19 @@ namespace Altura.Application.Services
     public class TenderService : ITenderService
     {
         private readonly ITenderParser _tenderParser;
-        private readonly ITrelloTenderService _trelloTenderService;
+        private readonly ITrelloService _trelloService;
 
-        public TenderService(ITenderParser tenderExtractor, ITrelloTenderService trelloTenderService)
+        public TenderService(ITenderParser tenderExtractor, ITrelloService trelloTenderService)
         {
             _tenderParser = tenderExtractor;
-            _trelloTenderService = trelloTenderService;
+            _trelloService = trelloTenderService;
         }
 
         public async Task<bool> ExtractTendersFromCsv(CancellationToken cancellationToken)
         {
             var tenders = _tenderParser.ParseTenders();
 
-            await _trelloTenderService.TransformTendersToCards(tenders, cancellationToken);
+            await _trelloService.TransformTendersToCards(tenders, cancellationToken);
 
             return true;
         }

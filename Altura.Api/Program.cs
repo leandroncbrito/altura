@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ITenderService, TenderService>();
 builder.Services.AddScoped<ITenderParser, TenderParser>();
 builder.Services.AddScoped<ITrelloApi, TrelloApi>();
-builder.Services.AddScoped<ITrelloTenderService, TrelloTenderService>();
+builder.Services.AddScoped<ITrelloService, TrelloService>();
 builder.Services.AddScoped<ITrelloBoard, TrelloBoard>();
 builder.Services.AddScoped<ITrelloList, TrelloList>();
 builder.Services.AddScoped<ITrelloCard, TrelloCard>();
