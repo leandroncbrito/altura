@@ -5,7 +5,6 @@ using Altura.Infrastructure.Apis.Configurations;
 using Altura.Infrastructure.ExternalServices;
 using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Readers;
-using TrelloDotNet.AutomationEngine.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 

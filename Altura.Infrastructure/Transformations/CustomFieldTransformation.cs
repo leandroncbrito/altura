@@ -6,7 +6,7 @@ namespace Altura.Infrastructure.Transformations
     {
         public static string? ConvertToString(this CustomField customField, object value)
         {
-            if (value == null)
+            if (customField == null || value == null)
             {
                 return null;
             }

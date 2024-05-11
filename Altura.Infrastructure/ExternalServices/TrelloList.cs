@@ -16,5 +16,10 @@ namespace Altura.Infrastructure.ExternalServices
         {
             return await _trelloApi.AddListAsync(list, cancellationToken);
         }
+
+        public async Task<List<Card>> GetCardsInListAsync(string listId, CancellationToken cancellationToken)
+        {
+            return await _trelloApi.GetCardsInListAsync(listId, cancellationToken);
+        }
     }
 }

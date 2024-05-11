@@ -1,12 +1,10 @@
-using Altura.Domain.Entities;
 using Altura.Infrastructure.Readers;
 using Microsoft.Extensions.Logging;
 using Moq;
-using System;
 
-namespace Altura.Unit.Tests
+namespace Altura.Unit.Tests.Readers
 {
-    public class TenderParserTest
+    public class TenderParserTests
     {
         [Fact]
         public void TenderParse_Should_Read_Csv_Properly()

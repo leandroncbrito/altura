@@ -92,7 +92,7 @@ namespace Altura.Infrastructure.ExternalServices
 
         private async Task<Card?> FindCardAsync(string listId, IEnumerable<CustomField> customFields, Tender tender, CancellationToken cancellationToken)
         {
-            var apiCards = await _trelloCard.GetCardsInListAsync(listId, cancellationToken);
+            var apiCards = await _trelloList.GetCardsInListAsync(listId, cancellationToken);
 
             foreach (var apiCard in apiCards)
             {

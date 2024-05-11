@@ -27,7 +27,7 @@ namespace Altura.Infrastructure.ExternalServices
 
             if (existingBoard == null)
             {
-                existingBoard = await _trelloApi.AddBoardAsync(new Board("Altura"), cancellationToken: cancellationToken);
+                existingBoard = await _trelloApi.AddBoardAsync(new Board("Altura", "Tender details"), cancellationToken: cancellationToken);
             }
 
             return existingBoard;

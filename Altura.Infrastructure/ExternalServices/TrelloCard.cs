@@ -2,7 +2,6 @@
 using Altura.Infrastructure.Apis.Models;
 using Altura.Infrastructure.Interfaces;
 using Altura.Infrastructure.Transformations;
-using Microsoft.Extensions.Logging;
 using TrelloDotNet.Model;
 
 namespace Altura.Infrastructure.ExternalServices
@@ -40,11 +39,6 @@ namespace Altura.Infrastructure.ExternalServices
         private async Task<Card> AddCardAsync(Card card, CancellationToken cancellationToken)
         {
             return await _trelloApi.AddCardAsync(card, cancellationToken);
-        }
-
-        public async Task<List<Card>> GetCardsInListAsync(string listId, CancellationToken cancellationToken)
-        {
-            return await _trelloApi.GetCardsInListAsync(listId, cancellationToken);
         }
 
         private async Task UpdateCardFieldsAsync(Card card, Tender tender, CancellationToken cancellationToken)

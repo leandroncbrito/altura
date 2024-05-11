@@ -16,7 +16,7 @@ namespace Altura.Api.Controllers
             _logger = logger;
         }
 
-        [HttpPost("parse")]        
+        [HttpPost("parse")]
         public async Task<ActionResult> Post(CancellationToken cancellationToken)
         {
             try

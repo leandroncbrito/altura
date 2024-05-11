@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Application", "Altura.Application\Altura.Application.csproj", "{F609880E-F707-415F-9A53-9B6F861A5C24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altura.Application", "Altura.Application\Altura.Application.csproj", "{F609880E-F707-415F-9A53-9B6F861A5C24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Unit.Tests", "Altura.Unit.Tests\Altura.Unit.Tests.csproj", "{326D156A-4988-4A2F-B5A6-715D55AF2D55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altura.Unit.Tests", "Altura.Unit.Tests\Altura.Unit.Tests.csproj", "{326D156A-4988-4A2F-B5A6-715D55AF2D55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Infrastructure", "Altura.Infrastructure\Altura.Infrastructure.csproj", "{221880AE-21D2-44E8-97D9-04FB67DBC5AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Domain", "Altura.Domain\Altura.Domain.csproj", "{6ADDBF7C-0D54-4D61-9A04-DCF02E48CA99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altura.Domain", "Altura.Domain\Altura.Domain.csproj", "{6ADDBF7C-0D54-4D61-9A04-DCF02E48CA99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altura.Api", "Altura.Api\Altura.Api.csproj", "{ABDF21FE-89AB-4510-A732-5009ACB21120}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altura.Api", "Altura.Api\Altura.Api.csproj", "{ABDF21FE-89AB-4510-A732-5009ACB21120}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F609880E-F707-415F-9A53-9B6F861A5C24} = {F609880E-F707-415F-9A53-9B6F861A5C24}
 	EndProjectSection
